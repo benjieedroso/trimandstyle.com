@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using trimandstyle.com.Models;
 
 namespace trimandstyle.com.AppDbContext
 {
@@ -9,5 +10,9 @@ namespace trimandstyle.com.AppDbContext
         { 
 
         }
+
+        public DbSet<Barber> Barbers { get; set; }
+        public DbSet<Customer> Customers{ get; set; }
+
     }
 }
