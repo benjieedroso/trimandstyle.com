@@ -11,8 +11,8 @@ using trimandstyle.com.AppDbContext;
 namespace trimandstyle.com.Migrations
 {
     [DbContext(typeof(TrimAndStyleDbContext))]
-    [Migration("20240621234911_AddBarberAndCustomerTables")]
-    partial class AddBarberAndCustomerTables
+    [Migration("20240622005645_AddBarbersAndCustomersWithConstraints")]
+    partial class AddBarbersAndCustomersWithConstraints
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,7 +36,8 @@ namespace trimandstyle.com.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Specialty")
                         .IsRequired()
@@ -59,7 +60,8 @@ namespace trimandstyle.com.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
 

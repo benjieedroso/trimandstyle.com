@@ -4,7 +4,7 @@
 
 namespace trimandstyle.com.Migrations
 {
-    public partial class AddBarberAndCustomerTables : Migration
+    public partial class AddBarbersAndCustomersWithConstraints : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace trimandstyle.com.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,7 +27,7 @@ namespace trimandstyle.com.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Specialty = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CustomerFK = table.Column<int>(type: "int", nullable: false)
                 },
