@@ -14,6 +14,11 @@ namespace trimandstyle.com.Controllers
 
         return View(); 
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
     
     }
 }
