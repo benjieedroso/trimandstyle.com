@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using trimandstyle.com.AppDbContext;
 using trimandstyle.com.Models;
 
 namespace trimandstyle.com.Controllers
+       
 {
     public class BarberController : Controller
     {
@@ -10,11 +13,14 @@ namespace trimandstyle.com.Controllers
             return View();
         }
 
-        public string Store(Barber barber)
-        {
-
-            return barber.Name;
-        }
+        public List<Customer> CreateProfile(Barber barber)
+        {   
+            using (var context = new TrimAndStyleDbContext())
+            {
+                var allCustomer = context.Customers.FromSqlRaw("Select * from Customers").ToList();
+                return allCustomer;
+            }
         }
     }
+}
 
