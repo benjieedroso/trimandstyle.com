@@ -12,9 +12,6 @@ namespace trimandstyle.com.Models
         public string Name { get; set; }
         public string Specialty { get; set; }
 
-        public Customer Customer { get; set; }
-
-        [ForeignKey(nameof(Customer))]
-        public int CustomerFK { get; set; }
+        
     }
 }
