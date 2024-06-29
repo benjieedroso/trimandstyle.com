@@ -19,5 +19,8 @@ namespace trimandstyle.com.AppDbContext
         public DbSet<Barber> Barbers { get; set; }
         public DbSet<Customer> Customers{ get; set; }
 
+        public DbSet<Booking> Booking { get; set; }
+
+
     }
 }

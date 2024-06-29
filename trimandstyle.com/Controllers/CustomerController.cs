@@ -8,6 +8,7 @@ namespace trimandstyle.com.Controllers
 {
     public class CustomerController : Controller
     {
+        private int IsRegistered = 0;
         public IActionResult Index()
         {
             return View();
@@ -24,8 +25,9 @@ namespace trimandstyle.com.Controllers
             return View();
         }
 
-        public int RegisterCustomer(Customer customer)
+        public IActionResult RegisterCustomer(Customer customer)
         {
+            int inserted = 0;
             var sql = "INSERT INTO Customers (Name, Address, ConfirmPassword, Email, IsAgreedTerms, IsEmailConfirmed, Password, PhoneNumber) VALUES (@Name, @Address, @ConfirmPassword, @Email, @IsAgreedTerms, @IsEmailConfirmed, @Password, @PhoneNumber)";
             using (var context = new TrimAndStyleDbContext())
             {
@@ -41,12 +43,22 @@ namespace trimandstyle.com.Controllers
                     new SqlParameter("@PhoneNumber", customer.PhoneNumber),
                 };
 
-                int inserted = context.Database.ExecuteSqlRaw(sql, parameters);
+                inserted = context.Database.ExecuteSqlRaw(sql, parameters);
 
-                return (inserted > 0) ?  1 : 0;
             }
 
 
+            if (inserted > 0)
+            {   
+                //
+                return RedirectToAction("Index", "Customer");
+            }
+
+
+        
+                return RedirectToAction("Register", "Customer");
+
+           
         }
     
     }
