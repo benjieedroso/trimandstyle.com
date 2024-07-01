@@ -1,6 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
 @{
 
 }
@@ -9,11 +10,11 @@
 <div class="container mt-5">
     <!-- Booking Section -->
     <h1 class="mb-4 text-center">Book an Appointment</h1>
-    <form class="mb-5">
+    <form class="mb-5" asp-action="Book" asp-controller="Booking">
         <div class="form-row">
             <div class="form-group col-md-6 mb-3">
                 <label for="appointmentDate">Date</label>
-                <input type="date" class="form-control" id="appointmentDate" required>
+                <input type="date" class="form-control" id="appointmentDate" required >
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="appointmentTime">Time</label>
@@ -29,7 +30,6 @@
                     <option value="@barber.Id">@barber.Name</option>
 
                 }
-           
             </select>
         </div>
         <button type="submit" class="btn btn-dark btn-block">Book Now</button>

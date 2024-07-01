@@ -25,5 +25,12 @@ namespace trimandstyle.com.Controllers
 
             return BarbersList;
         }
+
+        public Booking Book(Booking booking)
+        {
+            return booking;
+        }
+
+       
     }
 }
